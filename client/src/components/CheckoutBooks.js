@@ -19,7 +19,7 @@ const Checkout = () => {
 
   const handleCheckout = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/checkouts', {
+      const response = await fetch('http://localhost:5000/checkouts/api/checkouts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -47,7 +47,10 @@ const Checkout = () => {
   };
 
   return (
-    <div>
+    
+    <div >
+    <div><Header/></div>
+    <div style={{ padding: '4.5rem', textAlign: 'center' }}>
       <Button variant="contained" color="primary" onClick={() => setCheckoutDialogOpen(true)}>
         Check Out Book
       </Button>
@@ -88,6 +91,7 @@ const Checkout = () => {
         onClose={handleSnackbarClose}
         message={snackbarMessage}
       />
+    </div>
     </div>
   );
 };
