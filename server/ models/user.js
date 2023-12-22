@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   checkedOutBooks: [
     {
-      bookId: { type: mongoose.Schema.Types.ObjectId, ref: 'Book' },
+      bookId: { type: String, ref: 'Book' }, 
       checkoutDate: { type: Date, default: Date.now },
     },
   ],

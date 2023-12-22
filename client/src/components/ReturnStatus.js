@@ -1,8 +1,9 @@
 import React from 'react'
+import Header from './Header'
 
 const ReturnStatus = () => {
   return (
-    <div>ReturnStatus</div>
+    <div><Header/></div>
   )
 }
 

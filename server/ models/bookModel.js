@@ -5,8 +5,8 @@ const bookSchema = new mongoose.Schema({
   id: { type: String, required: true },
   title: { type: String, required: true },
   author: { type: String, required: true },
-  isbn: { type: String, required: true, unique: true },
-  published_at: { type: Date, required: true },
+  isbn: { type: String, required: true },
+  published_at: { type: Date },
   copies: { type: Number, required: true },
 });
 

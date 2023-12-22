@@ -43,7 +43,7 @@ function App() {
             </React.Fragment>
           }
         />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Books />} />
         <Route path="/dashboard/books" element={<Books />} />
         <Route path="/dashboard/checkout-books" element={<CheckoutBooks />} />
         <Route path="/dashboard/return-status" element={<ReturnStatus />} />

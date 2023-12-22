@@ -1,11 +1,23 @@
 // client/src/components/Header.js
-import React from "react";
-import { AppBar, Toolbar, Button, Box } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { AppBar, Toolbar, Button, Box, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    // Retrieve user ID from localStorage
+    const storedUserId = localStorage.getItem("userId");
+    setUserId(storedUserId);
+  }, []); // Run once when the component mounts
+
   const handleLogout = () => {
+    // Clear user ID and token from localStorage upon logout
+    localStorage.removeItem("userId");
+    localStorage.removeItem("token");
+    setUserId(null);
     navigate("/");
   };
 
@@ -13,7 +25,11 @@ const Header = () => {
     <AppBar position="fixed">
       <Toolbar>
         <Box sx={{ flexGrow: 1 }}>
-          {/* This will push the buttons to the right */}
+          {userId && (
+            <Typography variant="body1" sx={{ marginRight: 2, fontWeight: "bold" }}>
+              User ID: {userId}
+            </Typography>
+          )}
         </Box>
         <Button
           component={Link}

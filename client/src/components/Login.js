@@ -34,6 +34,7 @@ const Login = () => {
       const token = response.data.token;
 
       // Save the token to local storage or a secure storage method
+      localStorage.setItem("userId", id);
       localStorage.setItem("token", token);
 
       // Redirect to a different page or perform any other actions upon successful login
