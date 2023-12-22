@@ -14,7 +14,9 @@ import {
 } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
+
 const Register = () => {
+  const [userId, setUserId] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,16 +26,24 @@ const Register = () => {
 
   const handleRegister = async () => {
     try {
-      await axios.post("http://localhost:5000/api/register", {
+      // Log the input values for debugging
+      console.log("User ID:", userId);
+      console.log("Name:", name);
+      console.log("Email:", email);
+      console.log("Password:", password);
+
+      // Make the registration request
+      await axios.post("http://localhost:5000/auth/register", {
+        id: userId, // Assuming your server expects 'id' instead of 'USERID'
         name,
         email,
         password,
       });
 
-      // Redirect to the login page or perform any other actions upon successful registration
-      // For example, you can use React Router to navigate to the login page
-      navigate("/dashboard");
+      // Redirect to the dashboard or perform any other actions upon successful registration
+      navigate("/");
     } catch (error) {
+      console.error("Registration failed. Error:", error);
       setSnackbarMessage("Registration failed. Please try again.");
       setSnackbarOpen(true);
     }
@@ -50,6 +60,14 @@ const Register = () => {
           MERN LIBRARY
         </Typography>
         <form>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>User ID</InputLabel>
+            <Input
+              type="text"
+              value={userId}
+              onChange={(e) => setUserId(e.target.value)}
+            />
+          </FormControl>
           <FormControl fullWidth margin="normal">
             <InputLabel>Name</InputLabel>
             <Input

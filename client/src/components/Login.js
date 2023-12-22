@@ -8,12 +8,14 @@ import {
   InputLabel,
   Input,
   Snackbar,
-  Container, Paper, Typography,
+  Container,
+  Paper,
+  Typography,
 } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 
-
 const Login = () => {
+  const [id, setId] = useState(""); // Add id state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -22,7 +24,8 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/login", {
+      const response = await axios.post("http://localhost:5000/auth/login", {
+        id, // Include id in the login request if necessary
         email,
         password,
       });
@@ -54,6 +57,14 @@ const Login = () => {
           MERN LIBRARY
         </Typography>
         <form>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>ID</InputLabel>
+            <Input
+              type="text"
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+            />
+          </FormControl>
           <FormControl fullWidth margin="normal">
             <InputLabel>Email</InputLabel>
             <Input

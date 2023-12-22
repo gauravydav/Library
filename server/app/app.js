@@ -2,15 +2,19 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const authRoutes = require("../routes/authRoutes");
 const mongoose = require("mongoose");
+const cors = require('cors');
 const app = express();
+
+// Enable CORS for all routes
+app.use(cors());
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 
+
 // Connect to MongoDB
 
-const dbURI =
-  "mongodb+srv://gauravyadava963998:LzVqwT0nQQ37CMOt@cluster0.yj6gutd.mongodb.net/MachineTest?retryWrites=true&w=majority";
+const dbURI = "mongodb+srv://gaurav:Gaurav123@cluster0.llvrfzy.mongodb.net/";
 
 try {
   mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
