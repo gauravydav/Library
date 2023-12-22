@@ -1,6 +1,6 @@
 // controllers/checkoutController.js
-const User = require('../ models/user');
-const Book = require('../ models/bookModel');
+const User = require('../models/user');
+const Book = require('../models/bookModel');
 
 async function checkoutBook(req, res) {
   const { userId, bookId } = req.body;
